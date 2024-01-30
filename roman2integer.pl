@@ -1,8 +1,6 @@
 #!/usr/bin/perl
 
 use v5.28;
-#use warnings;
-use strict;
 
 chomp (my $input = <STDIN>);
 my @chars = split(undef, $input);
@@ -29,16 +27,12 @@ foreach (@chars){
 }
 
 foreach my $i (0..$#nums){
-    my $j = $i;
-    $j ++;
-
     if ($skip == 1){
         $skip = 0;
         next;
     }
-
-    if ($nums[$i] < $nums[$j]){
-        my $diff += ($nums[$j] - $nums[$i]);
+    if ($nums[$i] < $nums[$i+1]){
+        my $diff += ($nums[$i+1] - $nums[$i]);
         $integer += $diff;
         $skip = 1;
     }elsif ($nums[$i]){
